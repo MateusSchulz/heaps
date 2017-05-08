@@ -1,11 +1,3 @@
-/*	This program tests the heap functions used in the 
-	text. It uses random numbers to build a heap. 
-	It then presents a menu that allows the user to 
-	insert to, delete from, and print the heap. The maximum
-	heap size is 1023.
-	   Written by: 
-	   Date: 
-*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -172,30 +164,4 @@ void printHeap (HEAP* heap, int idx, int recuo){
 	for (i=0; i<heap->size; i++){
 		printf("%d\n",*(int*)(heap->heapAry[i]));
 	}
-		/*if (idx<heap->size){
-	printHeap (heap, idx*2+1, recuo+4);
-	printf("%d\n",*((int*)(heap->heapAry[idx])));
-	printHeap (heap, idx*2+2, recuo+4);
-	} */
 }
-
-/*	Results: (After heap automatically generated)
-
-Begin Heap Test
-array size is 15
-End of heap creation
-
-          34
-     633
-         124
- 855
-          83
-     764
-         533
-
-Please enter action <P, I, D, U, Q>: u
-Number of elements in heap:   7
-Head is NOT full
-Head is NOT emtpy
-
-Please enter action <P, I, D, U, Q>: */
