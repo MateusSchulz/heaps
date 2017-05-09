@@ -1,0 +1,12 @@
+1 Bryan Devaux 53000 5
+2 Amanda Trapp 89000 3
+3 Baclan Nguyen 93000 3
+4 Sarah Gilley 17000 1
+5 Warren Rexroad 72000 7
+6 Jorge Gonzales 65000 2
+7 Paula Hung 34000 3
+8 Lou Mason 21000 6
+9 Steve Chu 42000 4
+10 Dave Lightfoot 63000 3
+11 Joanne Brown 33000 2
+12 Thiago Rodrigues 200000 10
