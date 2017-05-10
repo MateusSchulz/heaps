@@ -4,18 +4,72 @@
 #include <stdbool.h>
 #include <time.h>
 
+int contador = 0;
 #include "P9-heap.h"
-const int maxSize = 15;
+const int maxSize = 16383;
 
 //	Prototype Definitions 
 int  compare    (void* arguPtr, void* heapPtr);
 void printHeap (HEAP* heap, int idx, int recuo);
+HEAP* preencherHeap ();
 
 int main(void){
 //	Local Definitions 
+	HEAP *heap;
+	srand(time(NULL));
+	int* dataPtr;
 
 //	Statements
+	heap = heapCreate (maxSize, compare);
+	if (!heap)
+	   printf("Can't create heap in main\n"), exit (100);
+
+	heap = preencherHeap();
+	printf("\nHEAP:\n");
+	printHeap(heap, 0, 0);
+
+	contador = 0;
+	dataPtr = (int*)malloc(sizeof (int));
+	*dataPtr = (rand() % 999 + 1);
+
+	printf("\n\nNúmero: %d\n", *dataPtr);
+	heapInsert(heap, dataPtr);
+
+	printf("\n\nContador Up: %d, para n=%d\n", contador, heap->size);
+
+	contador = 0;
+	heapDelete(heap, (void*)&dataPtr);
+	printf("\n\nNúmero: %d\n", *dataPtr);
+
+	printf("\n\nContador Down: %d, para n=%d\n", contador, heap->size);
+
+
 }	// main 
+
+HEAP* preencherHeap (){
+//	Local Definitions
+	int *dataPtr;
+	int bldLooper;
+
+//	Statements
+	HEAP* heap;
+	heap = heapCreate(maxSize, compare);
+	if(!heap)
+	   printf("Can't create heap in main\n"), exit (100);
+	printf("\nVETOR:\n");
+
+	for(bldLooper = 0; bldLooper < maxSize-1; bldLooper++){
+	    dataPtr = (int*)malloc(sizeof (int));
+	    if(!dataPtr)
+	        printf("Overflow in main\n"), exit (101);
+	    *dataPtr = rand() % 999 + 1;
+	    printf("%d ", *dataPtr);
+	    heapInsert (heap, dataPtr);
+	    printf("\n");
+	} // for 
+
+	return heap;
+}
 
 /*	================== compare ================= 
 	This function compares two integers identified
@@ -40,7 +94,8 @@ int compare(void* arg1, void* arg2){
 	    return  0;
 	else
 	    return +1;
-}	// compare 
+}	// compare
+
 void printHeap (HEAP* heap, int idx, int recuo){
 	int i;
 	for (i=0; i<heap->size; i++){
